@@ -1,0 +1,50 @@
+li {
+  list-style: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.meal-item-info {
+  grid-column: 1 / 2;
+}
+
+.meal-heading {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.meal-desc {
+  font-size: 18px;
+  font-style: italic;
+}
+
+.meal-price {
+  font-size: 20px;
+  color: #ff5f15;
+  font-weight: bold;
+}
+
+.meal-item-form-div {
+  padding: 1rem;
+  align-self: center;
+}
+
+@media (max-width: 780px) {
+  .meal-heading {
+    font-size: 18px;
+  }
+
+  .meal-desc {
+    font-size: 16px;
+  }
+
+  .meal-price {
+    font-size: 18px;
+  }
+
+  .meal-item-form-div{
+      padding: .25rem;
+  }
+}

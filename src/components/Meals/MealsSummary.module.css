@@ -1,0 +1,33 @@
+.summary{
+    width: 50%;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+    opacity: .85;
+    padding: 1rem 2rem;
+    margin-top: -15rem;
+    border-radius: 16px;
+}
+
+.summary-heading{
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.summary-desc{
+    font-size: 22px;
+}
+
+@media (max-width: 780px){
+    .summary{
+        width: 80%;
+    }
+
+    .summary-heading{
+        font-size: 20px;
+    }
+
+    .summary-desc{
+        font-size: 18px;
+    }
+}
