@@ -2,30 +2,28 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100vh;
-  z-index: 20;
-  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10;
   backdrop-filter: blur(5px);
+  animation: fade 0.25s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-overlay {
   position: fixed;
   width: 100%;
-  top: 15%;
-  transform: translate(15% , 0);
-  border-radius: 14px;
-  z-index: 30;
-  animation: slide-down 300ms ease-out forwards;
-}
-
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-3rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  z-index: 15;
+  top: 30%;
+  transform: translateY(-30%);
+  animation: fade 0.5s;
 }

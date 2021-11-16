@@ -1,37 +1,32 @@
-import Card from "../UI/Card";
+import { useContext, useState } from "react";
 import Modal from "../UI/Modal";
 import styles from "./Cart.module.css";
+import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
 
-function Cart() {
+function Cart(props) {
+
+  const cartCtx = useContext(CartContext);
+  const price = `$${cartCtx.totalAmount.toFixed(2)}`;
+
   const cartItems = (
     <ul className={styles["cart-items-list"]}>
-      <div className={styles["cart-items-info"]}>
-        <span className={styles["cart-info-meal"]}>Meal Added</span>
-        <span className={styles["cart-info-amount"]}>Amount</span>
-      </div>
-      {[
-        { id: "c1", meal: "Dragon Fire Pizza", amount: 2 },
-        { id: "c2", meal: "Jumbo Monster Burger", amount: 2 },
-        { id: "c3", meal: "Special Indian Curry", amount: 1 },
-      ].map((item) => (
-        <li className={styles["cart-items"]}>
-          <span className={styles["cart-item-meal"]}>{item.meal}</span>
-          <span className={styles["cart-item-amount"]}>{item.amount}</span>
-        </li>
+      {cartCtx.items.map((item) => (
+        <CartItem meal={item.meal} amount={item.amount} price={item.price}/>
       ))}
     </ul>
   );
 
   return (
-    <Modal>
+    <Modal onClick={props.onHideCart}>
       {cartItems}
       <div className={styles["cart-total"]}>
-        <span className={styles["cart-total-amount"]}>Total Amount</span>
-        <span className={styles["cart-total-price"]}>45.99</span>
+        <span className={styles["cart-total-amount"]}>Total</span>
+        <span className={styles["cart-total-price"]}>{price}</span>
       </div>
       <div className={styles["cart-action"]}>
-        <button className={styles["cart-action-close"]}>Close</button>
-        <button className={styles["cart-action-order"]}>Order</button>
+        <button className={styles["cart-action-close"]} onClick={props.onHideCart}>Close</button>
+        {cartCtx.items.length > 0 && <button className={styles["cart-action-order"]}>Order</button>}
       </div>
     </Modal>
   );

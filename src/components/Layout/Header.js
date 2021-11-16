@@ -2,13 +2,13 @@ import styles from "./Header.module.css";
 import mealsImg from "../../assets/mealsImg.jpg";
 import HeaderCartButton from "./HeaderCartButton";
 
-function Header() {
+function Header(props) {
   return (
     <>
       <header className={styles["header"]}>
         <div className={styles["header-nav"]}>
           <h2 className={styles["brand-name"]}>Food Order</h2>
-          <HeaderCartButton />
+          <HeaderCartButton onClick={props.onShowCart}/>
         </div>
       </header>
       <div className={styles["banner"]}>

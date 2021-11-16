@@ -41,6 +41,7 @@ function AvailableMeals() {
     return (
       <MealItem
         key={meal.id}
+        id={meal.id}
         meal={meal.meal}
         desc={meal.desc}
         price={meal.price}

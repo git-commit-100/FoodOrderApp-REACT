@@ -3,7 +3,7 @@ import styles from "./MealsSummary.module.css";
 function MealsSummary() {
   return (
     <div className={styles["summary"]}>
-      <h3 className={styles["summary-heading"]}>Yum... Yummm..... Yummmmm !</h3>
+      <h3 className={styles["summary-heading"]}>Delicious Food , Delievered to you</h3>
       <p className={styles["summary-desc"]}>
         Don't let your budget get in your way to enjoy mouth-watering ,
         lip-smacking and tummy-filling meals. These meals are prepared
