@@ -8,7 +8,7 @@ function MealItemForm(props) {
   function submitHandler(e){
     e.preventDefault();
     const inputAmount = +amountInputRef.current.value;  
-    if(inputAmount < 1 || inputAmount > 5){
+    if(inputAmount.toString().trim().length < 0 ||inputAmount < 1 || inputAmount > 5){
       //validation handled by HTML5
       return;
     }
@@ -18,7 +18,7 @@ function MealItemForm(props) {
   return (
     <form className={(styles["meal-item"])} onSubmit={submitHandler}>
       <label htmlFor={props.input.id} className={styles["form-label"]}>{props.label}</label>
-      <input ref={amountInputRef} {...props.input} className={styles["form-input"]}/>
+      <input ref={amountInputRef} {...props.input} className={styles["form-input"]} required/>
       <button type="submit" className={styles["form-btn"]}>+ Add</button>
     </form>
   );

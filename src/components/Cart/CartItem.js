@@ -5,7 +5,7 @@ function CartItem(props) {
   return (
     <li className={styles["cart-item"]}>
       <div>
-        <h2>{props.meal}</h2>
+        <h3>{props.meal}</h3>
         <div className={styles.summary}>
           <span className={styles.price}>{price}</span>
           <span className={styles.amount}>x {props.amount}</span>
