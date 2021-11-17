@@ -9,7 +9,7 @@ function Cart(props) {
   const price = `$${cartCtx.totalAmount.toFixed(2)}`;
 
   function addCartItemHandler(item) {
-    cartCtx.addItems(item);
+    cartCtx.incrementItem(item);
   }
 
   function removeCartItemHandler(id) {

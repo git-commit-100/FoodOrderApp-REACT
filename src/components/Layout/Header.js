@@ -7,7 +7,7 @@ function Header(props) {
     <>
       <header className={styles["header"]}>
         <div className={styles["header-nav"]}>
-          <h2 className={styles["brand-name"]}>Food Order</h2>
+          <h2 className={styles["brand-name"]}>Store 2 Door</h2>
           <HeaderCartButton onClick={props.onShowCart}/>
         </div>
       </header>
