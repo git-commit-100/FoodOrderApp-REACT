@@ -1,11 +1,10 @@
-import { useContext, useEffect } from "react";
-import { useState } from "react/cjs/react.development";
 import CartContext from "../../store/cart-context";
 import CartIcon from "../Cart/CartIcon";
 import styles from "./HeaderCartButton.module.css";
+import { useContext , useState , useEffect } from "react";
 
 function HeaderCartButton(props) {
-  const [ animateBtn, setIsAnimateBtn ] = useState(false);
+  const [animateBtn, setIsAnimateBtn] = useState(false);
   const cartCtx = useContext(CartContext);
   const { items } = cartCtx;
   const btnStyles = `${styles["cart-btn"]} ${animateBtn ? styles["bump"] : ""}`;
@@ -16,7 +15,7 @@ function HeaderCartButton(props) {
       //no animation
     }
     //adding animation class
-    setIsAnimateBtn(true)
+    setIsAnimateBtn(true);
     /* animation only happens when styles class is added
     so on every cart item added animation class must be added
     for that it also must be removed from previous operation */
