@@ -35,10 +35,10 @@ function Cart(props) {
   function handleOrderSubmit() {
     //logpout items ordered
     console.log("Ordering.....");
-   for(let item of cartCtx.items){
-    console.log(`${item.meal} x ${item.amount}`);
-   }
-   console.log("Total price to pay: $",cartCtx.totalAmount.toFixed(2));
+    for (let item of cartCtx.items) {
+      console.log(`${item.meal} x ${item.amount}`);
+    }
+    console.log("Total price to pay: $", cartCtx.totalAmount.toFixed(2));
   }
 
   return (
@@ -56,7 +56,12 @@ function Cart(props) {
           Close
         </button>
         {cartCtx.items.length > 0 && (
-          <button className={styles["cart-action-order"]} onClick={handleOrderSubmit}>Order</button>
+          <button
+            className={styles["cart-action-order"]}
+            onClick={handleOrderSubmit}
+          >
+            Order
+          </button>
         )}
       </div>
     </Modal>
