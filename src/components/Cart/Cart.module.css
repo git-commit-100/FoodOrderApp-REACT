@@ -4,7 +4,31 @@
   overflow: auto;
 }
 
-.cart-icon{
+div.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img.empty-cart-svg {
+  height: 20rem;
+  width: auto;
+}
+
+@media (max-width: 850px){
+  img.empty-cart-svg {
+    height: 15rem;
+    width: auto;
+  }
+}
+
+p.empty-cart-text{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.cart-icon {
   height: 1.5rem;
   width: 1.5rem;
 }

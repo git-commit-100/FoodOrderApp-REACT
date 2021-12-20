@@ -3,6 +3,7 @@ import Modal from "../UI/Modal";
 import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
+import emptyCart from "../../assets/emptyCart.png";
 
 function Cart(props) {
   const cartCtx = useContext(CartContext);
@@ -43,27 +44,41 @@ function Cart(props) {
 
   return (
     <Modal onClick={props.onHideCart}>
-      {cartItems}
-      <div className={styles["cart-total"]}>
-        <span className={styles["cart-total-amount"]}>Total</span>
-        <span className={styles["cart-total-price"]}>{price}</span>
-      </div>
-      <div className={styles["cart-action"]}>
-        <button
-          className={styles["cart-action-close"]}
-          onClick={props.onHideCart}
-        >
-          Close
-        </button>
-        {cartCtx.items.length > 0 && (
-          <button
-            className={styles["cart-action-order"]}
-            onClick={handleOrderSubmit}
-          >
-            Order
-          </button>
-        )}
-      </div>
+      {cartCtx.items.length === 0 && (
+        <div className={styles["empty-cart"]}>
+          <img
+            className={styles["empty-cart-svg"]}
+            src={emptyCart}
+            alt="Cart Empty"
+          />
+          <p className={styles["empty-cart-text"]}>
+            Your cart is empty ! Try adding something ;)
+          </p>
+        </div>
+      )}
+      {cartCtx.items.length > 0 && (
+        <>
+          {cartItems}
+          <div className={styles["cart-total"]}>
+            <span className={styles["cart-total-amount"]}>Total</span>
+            <span className={styles["cart-total-price"]}>{price}</span>
+          </div>
+          <div className={styles["cart-action"]}>
+            <button
+              className={styles["cart-action-close"]}
+              onClick={props.onHideCart}
+            >
+              Close
+            </button>
+            <button
+              className={styles["cart-action-order"]}
+              onClick={handleOrderSubmit}
+            >
+              Order
+            </button>
+          </div>
+        </>
+      )}
     </Modal>
   );
 }
