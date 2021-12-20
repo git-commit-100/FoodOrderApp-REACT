@@ -1,0 +1,27 @@
+div.checkout-div {
+  width: 100%;
+  margin: -.5rem auto;
+}
+
+form.checkout-form {
+  display: flex;
+  flex-direction: column;
+}
+
+form.checkout-form > label {
+  margin-top: 1.25rem;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+span.label-example {
+  color: rgb(155, 155, 155);
+  font-weight: normal;
+  font-style: italic;
+}
+
+form.checkout-form > input{
+    margin: .25rem 0;
+    font-size: 20px;
+    padding: 0.25rem .5rem;
+}

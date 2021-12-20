@@ -52,6 +52,7 @@ function AvailableMeals() {
           meal={meal.meal}
           desc={meal.desc}
           price={meal.price}
+          poster={meal.poster}
         />
       );
     });

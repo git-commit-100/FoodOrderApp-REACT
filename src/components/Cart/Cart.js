@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import Modal from "../UI/Modal";
 import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import emptyCart from "../../assets/emptyCart.png";
+import Checkout from "./Checkout";
 
 function Cart(props) {
+  const [showCheckout, setShowCheckout] = useState(false);
   const cartCtx = useContext(CartContext);
   const price = `$${cartCtx.totalAmount.toFixed(2)}`;
 
@@ -34,6 +36,7 @@ function Cart(props) {
   );
 
   function handleOrderSubmit() {
+    setShowCheckout(true);
     //logpout items ordered
     console.log("Ordering.....");
     for (let item of cartCtx.items) {
@@ -63,22 +66,25 @@ function Cart(props) {
             <span className={styles["cart-total-amount"]}>Total</span>
             <span className={styles["cart-total-price"]}>{price}</span>
           </div>
-          <div className={styles["cart-action"]}>
-            <button
-              className={styles["cart-action-close"]}
-              onClick={props.onHideCart}
-            >
-              Close
-            </button>
-            <button
-              className={styles["cart-action-order"]}
-              onClick={handleOrderSubmit}
-            >
-              Order
-            </button>
-          </div>
+          {!showCheckout && (
+            <div className={styles["cart-action"]}>
+              <button
+                className={styles["cart-action-close"]}
+                onClick={props.onHideCart}
+              >
+                Close
+              </button>
+              <button
+                className={styles["cart-action-order"]}
+                onClick={handleOrderSubmit}
+              >
+                Order
+              </button>
+            </div>
+          )}
         </>
       )}
+      {showCheckout && <Checkout />}
     </Modal>
   );
 }

@@ -24,7 +24,7 @@ function MealItem(props) {
       </div>
       <div className={styles["meal-item-form-div"]}>
         <MealItemForm
-          label="Amount"
+          label="No of items"
           onAddToCart={handleAddToCart}
           input={{
             id: "amount",
@@ -36,6 +36,11 @@ function MealItem(props) {
           }}
         />
       </div>
+      <img
+        className={styles["meal-poster"]}
+        src={props.poster}
+        alt="meal-poster"
+      />
     </li>
   );
 }

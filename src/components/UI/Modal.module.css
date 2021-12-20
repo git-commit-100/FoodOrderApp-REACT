@@ -26,4 +26,6 @@
   top: 30%;
   transform: translateY(-30%);
   animation: fade 0.5s;
+  max-height: 95vh;
+  overflow-y: auto;
 }
