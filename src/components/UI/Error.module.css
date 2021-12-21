@@ -1,0 +1,45 @@
+div.error-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3.error-msg {
+  margin-block: 0.25rem;
+}
+
+button.close-error-btn {
+  margin: 1rem 0;
+  font-size: 20px;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  width: auto;
+}
+
+button.close-error-btn {
+  border: 1px solid #e24c06;
+  color: #e24c06;
+}
+
+button.close-error-btn:hover,
+button.close-error-btn:active {
+  background-color: #e24c06;
+  color: white;
+}
+
+img.error-svg {
+  height: 20rem;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 850px) {
+  img.error-svg {
+    height: 15rem;
+    width: auto;
+  }
+}

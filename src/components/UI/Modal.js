@@ -18,7 +18,10 @@ function Modal(props) {
   const portalElement = document.getElementById("modal");
   return (
     <>
-      {reactDom.createPortal(<Backdrop onClick={props.onClick}/>, portalElement)}
+      {reactDom.createPortal(
+        <Backdrop onClick={props.onClick} />,
+        portalElement
+      )}
       {reactDom.createPortal(
         <ModalOverlay>{props.children}</ModalOverlay>,
         portalElement

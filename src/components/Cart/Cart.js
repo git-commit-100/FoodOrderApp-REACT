@@ -19,6 +19,10 @@ function Cart(props) {
     cartCtx.removeItem(id);
   }
 
+  function showForm() {
+    setShowCheckout(true);
+  }
+
   const cartItems = (
     <ul className={styles["cart-items-list"]}>
       {cartCtx.items.map((item) => (
@@ -35,30 +39,37 @@ function Cart(props) {
     </ul>
   );
 
-  function handleOrderSubmit() {
-    setShowCheckout(true);
-    //logpout items ordered
-    console.log("Ordering.....");
-    for (let item of cartCtx.items) {
-      console.log(`${item.meal} x ${item.amount}`);
-    }
-    console.log("Total price to pay: $", cartCtx.totalAmount.toFixed(2));
-  }
+  //DOM helpers
+  const cartActionJsx = (
+    <div className={styles["cart-action"]}>
+      <button
+        className={styles["cart-action-close"]}
+        onClick={props.onHideCart}
+      >
+        Close
+      </button>
+      <button className={styles["cart-action-order"]} onClick={showForm}>
+        Order
+      </button>
+    </div>
+  );
+
+  const emptyCartJsx = (
+    <div className={styles["empty-cart"]}>
+      <img
+        className={styles["empty-cart-svg"]}
+        src={emptyCart}
+        alt="Cart Empty"
+      />
+      <p className={styles["empty-cart-text"]}>
+        Your cart is empty ! Try adding something ;)
+      </p>
+    </div>
+  );
 
   return (
     <Modal onClick={props.onHideCart}>
-      {cartCtx.items.length === 0 && (
-        <div className={styles["empty-cart"]}>
-          <img
-            className={styles["empty-cart-svg"]}
-            src={emptyCart}
-            alt="Cart Empty"
-          />
-          <p className={styles["empty-cart-text"]}>
-            Your cart is empty ! Try adding something ;)
-          </p>
-        </div>
-      )}
+      {cartCtx.items.length === 0 && emptyCartJsx}
       {cartCtx.items.length > 0 && (
         <>
           {cartItems}
@@ -66,25 +77,16 @@ function Cart(props) {
             <span className={styles["cart-total-amount"]}>Total</span>
             <span className={styles["cart-total-price"]}>{price}</span>
           </div>
-          {!showCheckout && (
-            <div className={styles["cart-action"]}>
-              <button
-                className={styles["cart-action-close"]}
-                onClick={props.onHideCart}
-              >
-                Close
-              </button>
-              <button
-                className={styles["cart-action-order"]}
-                onClick={handleOrderSubmit}
-              >
-                Order
-              </button>
-            </div>
-          )}
+          {!showCheckout && cartActionJsx}
         </>
       )}
-      {showCheckout && <Checkout />}
+      {cartCtx.items.length > 0 && showCheckout && (
+        <Checkout
+          onHideCart={props.onHideCart}
+          onError={props.onError}
+          onSuccess={props.onSuccess}
+        />
+      )}
     </Modal>
   );
 }

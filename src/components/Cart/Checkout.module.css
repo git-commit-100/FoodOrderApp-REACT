@@ -1,6 +1,6 @@
 div.checkout-div {
   width: 100%;
-  margin: -.5rem auto;
+  margin: -0.5rem auto;
 }
 
 form.checkout-form {
@@ -10,8 +10,9 @@ form.checkout-form {
 
 form.checkout-form > label {
   margin-top: 1.25rem;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
+  color: #363636;
 }
 
 span.label-example {
@@ -20,8 +21,85 @@ span.label-example {
   font-style: italic;
 }
 
-form.checkout-form > input{
-    margin: .25rem 0;
-    font-size: 20px;
-    padding: 0.25rem .5rem;
+form.checkout-form > input {
+  margin: 0.25rem 0;
+  font-size: 18px;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid #ccc;
+  outline: none;
+}
+
+form.checkout-form > input.input-valid {
+  border: 2px solid #068a01;
+}
+
+form.checkout-form > input:focus {
+  background-color: white;
+  border: 2px solid #933a16;
+}
+
+form.checkout-form > input.input-invalid {
+  border: 2px solid #b40e0e;
+  background-color: #fddddd;
+}
+
+
+p.error-text {
+  color: #b40e0e;
+  margin-block: 0;
+  font-weight: bold;
+}
+
+div.checkout-form-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem 1rem;
+}
+
+button.btn {
+  font-size: 20px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  width: 20%;
+}
+
+button.btn.btn-close {
+  border: 1px solid #e24c06;
+  color: #e24c06;
+}
+
+button.btn.btn-close:hover,
+button.btn.btn-close:active {
+  background-color: #e24c06;
+  color: white;
+}
+
+button.btn.btn-confirm[disabled],
+button.btn.btn-confirm[disabled]:active,
+button.btn.btn-confirm[disabled]:hover {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #858585;
+  cursor: not-allowed;
+}
+
+button.btn.btn-confirm {
+  color: #097969;
+  border: 1px solid #097969;
+}
+
+button.btn.btn-confirm:hover,
+button.btn.btn-confirm:active {
+  background-color: #097969;
+  color: white;
+}
+
+@media (max-width: 780px) {
+  button.btn {
+    width: auto;
+  }
 }

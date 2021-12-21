@@ -1,0 +1,55 @@
+div.success-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3.success-msg {
+  margin-block: 0.25rem;
+  text-align: center;
+}
+
+h3.success-msg-green {
+  color: 	#228B22;
+}
+
+span.msg-time{
+  margin-block: 0.25rem;
+  color: #e24c06;
+}
+
+button.close-btn {
+  margin: 1rem 0;
+  font-size: 20px;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  width: auto;
+}
+
+button.close-btn {
+  border: 1px solid #e24c06;
+  color: #e24c06;
+}
+
+button.close-btn:hover,
+button.close-btn:active {
+  background-color: #e24c06;
+  color: white;
+}
+
+img.success-svg {
+  height: 20rem;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 850px) {
+  img.success-svg {
+    height: 15rem;
+    width: auto;
+  }
+}
