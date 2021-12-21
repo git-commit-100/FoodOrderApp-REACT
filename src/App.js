@@ -32,7 +32,7 @@ function App() {
   }
 
   function handleHideSuccessModal() {
-    setSuccess(false)
+    setSuccess(false);
   }
 
   return (
