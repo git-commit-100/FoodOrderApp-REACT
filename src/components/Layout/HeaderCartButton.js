@@ -1,16 +1,15 @@
-import CartContext from "../../store/cart-context";
 import CartIcon from "../Cart/CartIcon";
 import styles from "./HeaderCartButton.module.css";
-import { useContext , useState , useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function HeaderCartButton(props) {
   const [animateBtn, setIsAnimateBtn] = useState(false);
-  const cartCtx = useContext(CartContext);
-  const { items } = cartCtx;
+  const cart = useSelector((state) => state.cart);
   const btnStyles = `${styles["cart-btn"]} ${animateBtn ? styles["bump"] : ""}`;
 
   useEffect(() => {
-    if (items.length === 0) {
+    if (cart.items.length === 0) {
       return;
       //no animation
     }
@@ -30,12 +29,7 @@ function HeaderCartButton(props) {
     return () => {
       clearTimeout(timer);
     };
-  }, [items]);
-
-  //numberOfCartItems must be their amount and not different meals
-  const numberOfCartItems = items.reduce((currNum, item) => {
-    return currNum + item.amount;
-  }, 0);
+  }, [cart.items]);
 
   return (
     <button className={btnStyles} onClick={props.onClick}>
@@ -43,7 +37,7 @@ function HeaderCartButton(props) {
         <CartIcon />
       </span>
       <span className={styles["cart-text"]}>Your Cart</span>
-      <span className={styles["cart-badge"]}>{numberOfCartItems}</span>
+      <span className={styles["cart-badge"]}>{cart.totalQuantity}</span>
     </button>
   );
 }

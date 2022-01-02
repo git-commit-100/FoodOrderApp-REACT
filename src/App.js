@@ -2,7 +2,6 @@ import { useState } from "react";
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
-import CartProvider from "./store/CartProvider";
 import Error from "../src/components/UI/Error";
 import Success from "./components/UI/Success";
 
@@ -36,7 +35,7 @@ function App() {
   }
 
   return (
-    <CartProvider>
+    <>
       <Header onShowCart={showCartHandler} />
       <Meals />
       {showCart && (
@@ -48,7 +47,7 @@ function App() {
       )}
       {error && <Error errorMsg={error} onHideCart={handleHideError} />}
       {success && <Success onHideCart={handleHideSuccessModal} />}
-    </CartProvider>
+    </>
   );
 }
 

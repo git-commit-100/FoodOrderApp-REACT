@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
-import CartContext from "../../store/cart-context";
-import useInput from "../../store/use-Input";
+import React from "react";
+import useInput from "../../hooks/use-Input";
 import styles from "./Checkout.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import cartActions from "../../store/cartSlice";
 
 function Checkout(props) {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart);
+
   const {
     value: nameInput,
     isValid: isNameInputValid,
@@ -36,8 +40,6 @@ function Checkout(props) {
     handleInputBlur: handleCityInputBlur,
   } = useInput((city) => city.trim() !== "");
 
-  const cartCtx = useContext(CartContext);
-
   let isFormValid = false;
 
   if (
@@ -62,10 +64,10 @@ function Checkout(props) {
           },
         }
       );
-      const data = await response.json();
+      console.log(response.ok);
       //successful insertion into db
       props.onHideCart();
-      cartCtx.resetCart();
+      dispatch(cartActions.actions.resetCart());
       props.onSuccess();
     } catch (error) {
       props.onHideCart();
@@ -82,8 +84,8 @@ function Checkout(props) {
         house: houseInput,
         street: streetInput,
         city: cityInput,
-        orderItems: [...cartCtx.items],
-        totalAmount: +cartCtx.totalAmount.toFixed(2),
+        orderItems: [...cart.items],
+        totalPrice: +cart.totalPrice,
       };
       sendDataToDb(newUser);
     }

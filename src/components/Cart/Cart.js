@@ -1,23 +1,16 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Modal from "../UI/Modal";
 import styles from "./Cart.module.css";
-import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import emptyCart from "../../assets/emptyCart.png";
 import Checkout from "./Checkout";
+import { useSelector } from "react-redux";
 
 function Cart(props) {
   const [showCheckout, setShowCheckout] = useState(false);
-  const cartCtx = useContext(CartContext);
-  const price = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const cart = useSelector((state) => state.cart);
 
-  function addCartItemHandler(item) {
-    cartCtx.incrementItem(item);
-  }
-
-  function removeCartItemHandler(id) {
-    cartCtx.removeItem(id);
-  }
+  const price = `$${cart.totalPrice.toFixed(2)}`;
 
   function showForm() {
     setShowCheckout(true);
@@ -25,15 +18,15 @@ function Cart(props) {
 
   const cartItems = (
     <ul className={styles["cart-items-list"]}>
-      {cartCtx.items.map((item) => (
+      {cart.items.map((item) => (
         <CartItem
           id={item.id}
           key={item.id}
           meal={item.meal}
-          amount={item.amount}
+          quantity={item.quantity}
           price={item.price}
-          onRemove={removeCartItemHandler.bind(null, item.id)}
-          onAdd={addCartItemHandler.bind(null, item)}
+          onRemove
+          onAdd
         />
       ))}
     </ul>
@@ -69,8 +62,8 @@ function Cart(props) {
 
   return (
     <Modal onClick={props.onHideCart}>
-      {cartCtx.items.length === 0 && emptyCartJsx}
-      {cartCtx.items.length > 0 && (
+      {cart.items.length === 0 && emptyCartJsx}
+      {cart.items.length > 0 && (
         <>
           {cartItems}
           <div className={styles["cart-total"]}>
@@ -80,7 +73,7 @@ function Cart(props) {
           {!showCheckout && cartActionJsx}
         </>
       )}
-      {cartCtx.items.length > 0 && showCheckout && (
+      {cart.items.length > 0 && showCheckout && (
         <Checkout
           onHideCart={props.onHideCart}
           onError={props.onError}
